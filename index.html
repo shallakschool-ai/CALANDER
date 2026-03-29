@@ -287,93 +287,450 @@
     }
 
     .day.empty{
-      bac
+      background:#f8faf9;
+      border-style:dashed;
+      box-shadow:none;
+    }
+
+    .day.has-events{cursor:pointer}
+    .day.has-events:hover{transform:translateY(-2px)}
+    .day.dimmed{opacity:.48}
+
+    .day-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:6px;
+    }
+
+    .day-number{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      font-weight:900;
+      background:#f3f6f5;
+      font-size:.88rem;
+    }
+
+    .day-text{
+      color:var(--muted);
+      font-size:.78rem;
+      line-height:1.42;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    .count{
+      font-size:.7rem;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .marker-row{
+      margin-top:auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:5px;
+    }
+
+    .marker{width:9px;height:9px}
+
+    .panel-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .panel-head h3,.panel-head h4{
+      margin:0;
+      color:var(--green-dark);
+      font-size:1rem;
+    }
+
+    .muted{
+      margin:0;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .events{
+      display:grid;
+      gap:9px;
+      max-height:700px;
+      overflow:auto;
+    }
+
+    .event-card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      padding:11px;
+      display:grid;
+      gap:6px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .event-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      font-size:.82rem;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      background:#f7faf8;
+      border:1px solid #edf2ef;
+      border-radius:999px;
+      padding:6px 9px;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:700;
+    }
+
+    .event-title{
+      margin:0;
+      font-weight:800;
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+    }
+
+    .summary-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:11px;
+      text-align:center;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .summary-box strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:4px;
+      color:var(--green-dark);
+    }
+
+    .textarea{
+      min-height:120px;
+      resize:vertical;
+      line-height:1.8;
+    }
+
+    .year-view{
+      display:none;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:12px;
+    }
+
+    .year-view.active,.month-view.active{display:block}
+
+    .mini-month{padding:12px}
+    .mini-month h3{
+      margin:0 0 10px;
+      font-size:.98rem;
+      color:var(--green-dark);
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:5px;
+    }
+
+    .mini-head,.mini-day{
+      padding:7px 0;
+      text-align:center;
+      border-radius:10px;
+      font-size:.78rem;
+    }
+
+    .mini-head{
+      background:#f3f7f5;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .mini-day{background:#fff}
+    .mini-day.empty{background:#f8faf9}
+    .mini-day.eventful{
+      background:var(--green-soft);
+      color:var(--green-dark);
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .footer{
+      margin-top:12px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.88rem;
+      line-height:1.8;
+      padding:4px 8px;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(26,34,31,.35);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      z-index:1000;
+    }
+
+    .modal.show{display:flex}
+    .modal-card{
+      width:min(680px,100%);
+      max-height:88vh;
+      overflow:auto;
+      padding:16px;
+    }
+
+    .modal-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .modal-head h3{
+      margin:0;
+      color:var(--green-dark);
+      font-size:1.05rem;
+    }
+
+    .close-btn{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:#f2f5f3;
+      color:var(--text);
+      padding:0;
+      font-size:1.15rem;
+      line-height:1;
+    }
+
+    .empty-state{
+      background:#fff;
+      border:1px dashed var(--line);
+      border-radius:16px;
+      padding:16px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    @media (max-width:1100px){
+      .hero,.toolbar,.layout{grid-template-columns:1fr}
+    }
+
+    @media (max-width:760px){
+      .container{width:min(100%,calc(100% - 10px));margin:6px auto 16px}
+      .hero,.panel,.mini-month,.modal-card{padding:12px;border-radius:18px}
+      .hero{gap:12px}
+      .legend{grid-template-columns:1fr}
+      .legend-box{padding:12px}
+
+      .toolbar{
+        position:sticky;
+        top:8px;
+        z-index:20;
+        background:rgba(243,246,245,.9);
+        backdrop-filter:blur(10px);
+        padding:8px;
+        border-radius:18px;
+        border:1px solid rgba(221,229,225,.9);
+        box-shadow:var(--shadow);
+      }
+
+      .month-nav{
+        display:flex;
+        overflow:auto;
+        gap:8px;
+        padding:2px 2px 6px;
+        scroll-snap-type:x proximity;
+      }
+      .month-nav::-webkit-scrollbar{display:none}
+      .month-chip{
+        min-width:110px;
+        flex:0 0 auto;
+        scroll-snap-align:start;
+      }
+
+      .calendar-grid{gap:6px}
+      .weekday,.day{padding:6px;border-radius:12px}
+      .weekday{font-size:.72rem}
+      .day{
+        min-height:76px;
+        border-radius:14px;
+      }
+      .day-number{
+        width:28px;
+        height:28px;
+        font-size:.78rem;
+      }
+      .count{display:none}
+      .day-text{
+        font-size:.7rem;
+        -webkit-line-clamp:1;
+      }
+      .summary{grid-template-columns:1fr 1fr}
+      .events{max-height:none}
+      .switch-wrap,.action-wrap{width:100%}
+      .switch-wrap button,.action-wrap button{flex:1}
+      .month-header .action-wrap{width:100%}
+      .month-header .action-wrap button{flex:1}
+      .event-card,.summary-box{border-radius:14px}
+    }
+
+    @media (max-width:480px){
+      body{background:#f6f8f7}
+      .container{width:min(100%,calc(100% - 8px))}
+      .hero{
+        padding:12px;
+        border-radius:20px;
+      }
+      .hero h1{
+        font-size:1.22rem;
+        line-height:1.28;
+      }
+      .hero p{font-size:.88rem;line-height:1.75}
+      .pill{font-size:.8rem;padding:6px 10px}
+      .legend-item{font-size:.82rem}
+
+      .panel{
+        padding:12px;
+        border-radius:18px;
+      }
+
+      .month-header{
+        margin-bottom:12px;
+      }
+      .season{font-size:.8rem;padding:6px 10px}
+      .month-title{font-size:1.08rem}
+
+      .calendar-grid{
+        gap:5px;
+      }
+      .weekday{
+        font-size:.64rem;
+        padding:7px 2px;
+      }
+      .day{
+        min-height:70px;
+        padding:5px;
+      }
+      .day-number{
+        width:24px;
+        height:24px;
+        font-size:.72rem;
+      }
+      .marker{width:8px;height:8px}
+
+      .toolbar{
+        gap:8px;
+        top:6px;
+        padding:7px;
+      }
+      .field,.select,.textarea{
+        border-radius:14px;
+        padding:12px 13px;
+        font-size:.92rem;
+      }
+      button{border-radius:12px}
+      .summary{grid-template-columns:1fr}
+      .mini-head,.mini-day{font-size:.7rem}
+      .footer{font-size:.82rem}
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <section class="hero">
-      <div>
-        <div class="pills">
-          <span class="pill">2025 / 2026</span>
-          <span class="pill">1447 / 1448</span>
-        </div>
-        <h1>الروزنامة الإلكترونية لثانوية الجنان</h1>
-        <p>نسخة تفاعلية جاهزة للنشر على GitHub Pages، مع عرض شهري وعرض سنوي وبحث داخل الأحداث ونافذة تفاصيل لكل يوم.</p>
-      </div>
-      <div class="legend-box">
-        <h2>دليل الألوان</h2>
-        <div class="legend" id="legend"></div>
-      </div>
-    </section>
 
-    <section class="toolbar">
-      <input id="searchInput" class="field" type="text" placeholder="ابحث عن حدث أو مناسبة..." />
-      <select id="categoryFilter" class="select">
-        <option value="all">كل التصنيفات</option>
-      </select>
+    <!-- HEADER MOBILE FIRST -->
+    <header class="hero" style="display:block">
+      <div class="pills">
+        <span class="pill">2025 / 2026</span>
+        <span class="pill">1447 / 1448</span>
+      </div>
+      <h1>الروزنامة الإلكترونية</h1>
+      <p>ثانوية الجنان</p>
+    </header>
+
+    <!-- TOOLBAR MOBILE -->
+    <section class="toolbar" style="grid-template-columns:1fr;">
+      <input id="searchInput" class="field" type="text" placeholder="ابحث..." />
+
       <div class="switch-wrap">
-        <button class="switch-btn active" data-view="month">عرض شهري</button>
-        <button class="switch-btn" data-view="year">عرض سنوي</button>
+        <button class="switch-btn active" data-view="month">📅 شهري</button>
+        <button class="switch-btn" data-view="year">🗓️ سنوي</button>
       </div>
+
       <div class="action-wrap">
-        <button id="printBtn" class="btn-primary">طباعة</button>
-        <button id="resetBtn" class="btn-soft">أول شهر</button>
+        <button id="resetBtn" class="btn-soft">🏠 بداية</button>
+        <button id="printBtn" class="btn-primary">🖨️ طباعة</button>
       </div>
     </section>
 
+    <!-- MONTH NAV -->
     <nav class="month-nav" id="monthNav"></nav>
 
+    <!-- MONTH VIEW -->
     <section class="month-view active" id="monthView">
-      <div class="layout">
-        <div class="panel">
-          <div class="month-header">
-            <div>
-              <div class="season" id="seasonLabel"></div>
-              <h2 class="month-title" id="monthTitle"></h2>
-            </div>
-            <div class="action-wrap">
-              <button id="prevMonth" class="btn-soft">الشهر السابق</button>
-              <button id="nextMonth" class="btn-soft">الشهر التالي</button>
-            </div>
+
+      <div class="panel">
+        <div class="month-header">
+          <div>
+            <div class="season" id="seasonLabel"></div>
+            <h2 class="month-title" id="monthTitle"></h2>
           </div>
-          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="action-wrap">
+            <button id="prevMonth" class="btn-soft">◀</button>
+            <button id="nextMonth" class="btn-soft">▶</button>
+          </div>
         </div>
 
-        <div>
-          <div class="panel">
-            <div class="panel-head">
-              <h3>أحداث الشهر</h3>
-              <p class="muted" id="eventsCount">0 حدث</p>
-            </div>
-            <div class="events" id="eventList"></div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-head">
-              <h4>ملخص سريع</h4>
-            </div>
-            <div class="summary" id="summaryGrid"></div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-head">
-              <h4>ملاحظات</h4>
-            </div>
-            <textarea id="notesArea" class="textarea" placeholder="اكتب ملاحظاتك هنا..."></textarea>
-            <div class="action-wrap" style="margin-top:12px;">
-              <button id="saveNotes" class="btn-primary">حفظ</button>
-              <button id="clearNotes" class="btn-soft">مسح</button>
-            </div>
-          </div>
-        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
       </div>
+
+      <!-- EVENTS LIST UNDER CALENDAR (LIKE APPS) -->
+      <div class="panel">
+        <div class="panel-head">
+          <h3>الأحداث</h3>
+          <p class="muted" id="eventsCount">0</p>
+        </div>
+        <div class="events" id="eventList"></div>
+      </div>
+
     </section>
 
+    <!-- YEAR VIEW -->
     <section class="year-view" id="yearView"></section>
 
-    <div class="footer">احفظ الملف باسم <strong>index.html</strong> وارفعه مباشرة إلى GitHub Pages.</div>
   </div>
 
+  <!-- MODAL -->
   <div class="modal" id="modal">
     <div class="modal-card">
       <div class="modal-head">
@@ -384,427 +741,5 @@
     </div>
   </div>
 
-  <script>
-    const categoryMeta = {
-      school:  { label: 'مواعيد تربوية', color: 'var(--school)' },
-      holiday: { label: 'أعطال', color: 'var(--holiday)' },
-      global:  { label: 'مناسبات عالمية', color: 'var(--global)' },
-      islamic: { label: 'مناسبات إسلامية', color: 'var(--islamic)' },
-      grades:  { label: 'تصدير علامات', color: 'var(--grades)' },
-      review:  { label: 'مراجعة للاختبارات', color: 'var(--review)' },
-      exam:    { label: 'امتحانات فصلية', color: 'var(--exam)' }
-    };
-
-    const weekDays = ['الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت','الأحد'];
-
-    const months = [
-      { key:'2025-09', title:'أيلول 2025', season:'بداية فصل الخريف', days:30, startOffset:0, events:[
-        { day:5, title:'ذكرى المولد النبوي الشريف', category:'islamic' },
-        { day:8, title:'دخول صفوف الثالث الثانوي', category:'school' },
-        { day:10, title:'دخول صف التاسع', category:'school' },
-        { day:15, title:'دخول المرحلة الثانوية', category:'school' },
-        { day:17, title:'دخول المرحلة المتوسطة', category:'school' },
-        { day:22, title:'دخول الحلقة الثانية', category:'school' },
-        { day:24, title:'دخول الحلقة الأولى', category:'school' },
-        { day:27, title:'اللقاء الأول لأولياء الأمور', category:'school' },
-        { day:29, title:'دخول روضة ثانية وثالثة', category:'school' }
-      ]},
-      { key:'2025-10', title:'تشرين الأول 2025', season:'الخريف', days:31, startOffset:2, events:[
-        { day:1, title:'دخول روضة أولى', category:'school' },
-        { day:4, title:'يوم الرفق بالحيوان', category:'global' },
-        { day:10, title:'اليوم العالمي للصحة النفسية', category:'global' },
-        { day:11, title:'اللقاء الأول لأولياء الأمور في مرحلة الروضات', category:'school' }
-      ]},
-      { key:'2025-11', title:'تشرين الثاني 2025', season:'الخريف', days:30, startOffset:5, events:[
-        { day:16, title:'يوم التسامح العالمي', category:'global' },
-        { day:22, title:'ذكرى الاستقلال', category:'holiday' },
-        { day:25, title:'نهاية السعي الأول (متوسط - ثانوي)', category:'school' },
-        { day:29, title:'تصدير علامات السعي الأول', category:'grades' }
-      ]},
-      { key:'2025-12', title:'كانون الأول 2025', season:'الخريف', days:31, startOffset:0, events:[
-        { day:4, title:'اليوم العالمي للغة العربية', category:'global' },
-        { day:6, title:'عيد القديسة بربارة', category:'school' },
-        { day:10, title:'اليوم العالمي لحقوق الإنسان', category:'global' },
-        { day:13, title:'مراجعة للاختبارات', category:'review' },
-        { day:15, title:'مراجعة للاختبارات', category:'review' },
-        { day:16, title:'امتحانات فصلية', category:'exam' },
-        { day:17, title:'امتحانات فصلية', category:'exam' },
-        { day:22, title:'بدء عطلة الأعياد', category:'holiday' },
-        { day:25, title:'عيد الميلاد لدى الطوائف الغربية', category:'holiday' },
-        { day:29, title:'استمرار عطلة الميلاد', category:'holiday' },
-        { day:30, title:'استمرار عطلة الميلاد', category:'holiday' },
-        { day:31, title:'استمرار عطلة الميلاد', category:'holiday' }
-      ]},
-      { key:'2026-01', title:'كانون الثاني 2026', season:'بداية فصل الشتاء', days:31, startOffset:3, events:[
-        { day:1, title:'رأس السنة الميلادية', category:'holiday' },
-        { day:6, title:'عيد الميلاد عند الطوائف الأرمنية الأرثوذكسية', category:'holiday' },
-        { day:17, title:'عطلة إدارية', category:'holiday' },
-        { day:24, title:'اليوم العالمي للتعليم', category:'global' },
-        { day:26, title:'اليوم العالمي للطاقة النظيفة', category:'global' },
-        { day:28, title:'نهاية السعي الثاني (متوسط - ثانوي)', category:'school' }
-      ]},
-      { key:'2026-02', title:'شباط 2026', season:'الشتاء', days:28, startOffset:6, events:[
-        { day:1, title:'مناسبة مدرسية', category:'global' },
-        { day:2, title:'امتحانات فصلية', category:'exam' },
-        { day:4, title:'امتحانات فصلية', category:'exam' },
-        { day:5, title:'تصدير علامات', category:'grades' },
-        { day:7, title:'امتحانات فصلية', category:'exam' },
-        { day:10, title:'امتحانات فصلية', category:'exam' },
-        { day:11, title:'مراجعة للاختبارات', category:'review' },
-        { day:12, title:'امتحانات فصلية', category:'exam' },
-        { day:14, title:'عطلة/مناسبة', category:'holiday' },
-        { day:16, title:'تصدير علامات', category:'grades' },
-        { day:17, title:'امتحانات فصلية', category:'exam' },
-        { day:18, title:'مناسبة إسلامية', category:'islamic' },
-        { day:19, title:'مناسبة إسلامية', category:'islamic' },
-        { day:20, title:'مناسبة اجتماعية', category:'global' },
-        { day:21, title:'بداية عطلة منتصف السنة', category:'holiday' },
-        { day:24, title:'اليوم العالمي للعدالة الاجتماعية', category:'global' }
-      ]},
-      { key:'2026-03', title:'آذار 2026', season:'بداية فصل الربيع', days:31, startOffset:6, events:[
-        { day:2, title:'توزيع نتائج الفصل الثاني', category:'grades' },
-        { day:3, title:'توزيع نتائج الفصل الثاني', category:'grades' },
-        { day:4, title:'توزيع نتائج الفصل الثاني', category:'grades' },
-        { day:9, title:'بداية نشاطات الربيع', category:'islamic' },
-        { day:12, title:'فعالية توعوية', category:'global' },
-        { day:14, title:'مناسبة رمضانية', category:'islamic' },
-        { day:15, title:'مناسبة رمضانية', category:'islamic' },
-        { day:16, title:'مناسبة رمضانية', category:'islamic' },
-        { day:17, title:'مناسبة رمضانية', category:'islamic' },
-        { day:18, title:'مناسبة رمضانية', category:'islamic' },
-        { day:19, title:'عطلة عيد الأم', category:'holiday' },
-        { day:20, title:'اليوم العالمي للفرنكوفونية', category:'global' },
-        { day:21, title:'عطلة مدرسية', category:'holiday' },
-        { day:22, title:'اليوم العالمي للمياه', category:'global' }
-      ]},
-      { key:'2026-04', title:'نيسان 2026', season:'الربيع', days:30, startOffset:2, events:[
-        { day:2, title:'اليوم العالمي للتوعية بالتوحد', category:'global' },
-        { day:6, title:'نشاط تربوي', category:'school' },
-        { day:7, title:'نشاط تربوي', category:'school' },
-        { day:8, title:'نشاط تربوي', category:'school' },
-        { day:9, title:'نشاط تربوي', category:'school' },
-        { day:10, title:'عطلة مدرسية', category:'holiday' },
-        { day:11, title:'عطلة مدرسية', category:'holiday' },
-        { day:12, title:'عطلة مدرسية', category:'holiday' },
-        { day:22, title:'اليوم العالمي للأرض', category:'global' },
-        { day:23, title:'اليوم العالمي للغة الإنجليزية', category:'global' },
-        { day:25, title:'عطلة', category:'holiday' },
-        { day:28, title:'فعالية مدرسية', category:'school' }
-      ]},
-      { key:'2026-05', title:'أيار 2026', season:'الربيع', days:31, startOffset:4, events:[
-        { day:1, title:'عيد العمال', category:'holiday' },
-        { day:3, title:'بدء فترة إنجاز العلامات', category:'grades' },
-        { day:4, title:'بدء فترة إنجاز العلامات', category:'grades' },
-        { day:5, title:'بدء فترة إنجاز العلامات', category:'grades' },
-        { day:18, title:'امتحان/فعالية مدرسية', category:'exam' },
-        { day:21, title:'تصدير علامات', category:'grades' },
-        { day:23, title:'تصدير علامات', category:'grades' },
-        { day:27, title:'نشاطات التخرج', category:'islamic' },
-        { day:28, title:'نشاطات التخرج', category:'islamic' },
-        { day:29, title:'نشاطات التخرج', category:'islamic' },
-        { day:30, title:'نشاطات التخرج', category:'islamic' },
-        { day:31, title:'نشاطات التخرج', category:'islamic' }
-      ]},
-      { key:'2026-06', title:'حزيران 2026', season:'بداية فصل الصيف', days:30, startOffset:0, events:[
-        { day:1, title:'مناسبة عالمية', category:'global' },
-        { day:7, title:'مناسبة مدرسية', category:'school' },
-        { day:13, title:'فعالية الصفوف العليا', category:'holiday' },
-        { day:17, title:'حفل التخرج', category:'school' }
-      ]}
-    ];
-
-    const state = { activeMonthIndex: 0, view: 'month' };
-    const notesKey = 'jinan_calendar_notes_v2';
-
-    const legend = document.getElementById('legend');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const monthNav = document.getElementById('monthNav');
-    const monthView = document.getElementById('monthView');
-    const yearView = document.getElementById('yearView');
-    const monthTitle = document.getElementById('monthTitle');
-    const seasonLabel = document.getElementById('seasonLabel');
-    const calendarGrid = document.getElementById('calendarGrid');
-    const eventList = document.getElementById('eventList');
-    const eventsCount = document.getElementById('eventsCount');
-    const summaryGrid = document.getElementById('summaryGrid');
-    const searchInput = document.getElementById('searchInput');
-    const notesArea = document.getElementById('notesArea');
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-
-    function buildLegendAndFilter() {
-      Object.keys(categoryMeta).forEach(function(key) {
-        const meta = categoryMeta[key];
-        const item = document.createElement('div');
-        item.className = 'legend-item';
-        item.innerHTML = '<span class="dot" style="background:' + meta.color + '"></span>' + meta.label;
-        legend.appendChild(item);
-
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = meta.label;
-        categoryFilter.appendChild(option);
-      });
-    }
-
-    function matchesFilters(event) {
-      const q = searchInput.value.trim().toLowerCase();
-      const cat = categoryFilter.value;
-      const text = (event.title + ' ' + categoryMeta[event.category].label).toLowerCase();
-      const queryOk = !q || text.indexOf(q) !== -1;
-      const catOk = cat === 'all' || event.category === cat;
-      return queryOk && catOk;
-    }
-
-    function buildMonthNav() {
-      monthNav.innerHTML = '';
-      months.forEach(function(month, index) {
-        const btn = document.createElement('button');
-        btn.className = 'month-chip' + (index === state.activeMonthIndex ? ' active' : '');
-        btn.textContent = month.title;
-        btn.addEventListener('click', function() {
-          state.activeMonthIndex = index;
-          state.view = 'month';
-          render();
-        });
-        monthNav.appendChild(btn);
-      });
-    }
-
-    function renderCalendar(month) {
-      calendarGrid.innerHTML = '';
-      monthTitle.textContent = month.title;
-      seasonLabel.textContent = month.season;
-
-      weekDays.forEach(function(name) {
-        const head = document.createElement('div');
-        head.className = 'weekday';
-        head.textContent = name;
-        calendarGrid.appendChild(head);
-      });
-
-      for (let i = 0; i < month.startOffset; i++) {
-        const empty = document.createElement('div');
-        empty.className = 'day empty';
-        calendarGrid.appendChild(empty);
-      }
-
-      for (let day = 1; day <= month.days; day++) {
-        const original = month.events.filter(function(e) { return e.day === day; });
-        const filtered = original.filter(matchesFilters);
-        const cell = document.createElement('div');
-        cell.className = 'day' + (original.length ? ' has-events' : '') + (original.length && !filtered.length ? ' dimmed' : '');
-
-        const top = document.createElement('div');
-        top.className = 'day-top';
-
-        const number = document.createElement('div');
-        number.className = 'day-number';
-        number.textContent = day;
-        if (filtered.length) {
-          number.style.background = categoryMeta[filtered[0].category].color;
-          number.style.color = '#fff';
-        }
-
-        const count = document.createElement('div');
-        count.className = 'count';
-        count.textContent = filtered.length ? (filtered.length + ' حدث') : (original.length ? 'مخفي' : '');
-
-        top.appendChild(number);
-        top.appendChild(count);
-        cell.appendChild(top);
-
-        if (filtered.length) {
-          const text = document.createElement('div');
-          text.className = 'day-text';
-          text.textContent = filtered.map(function(e) { return e.title; }).join(' • ');
-          cell.appendChild(text);
-
-          const markers = document.createElement('div');
-          markers.className = 'marker-row';
-          Array.from(new Set(filtered.map(function(e) { return e.category; }))).forEach(function(cat) {
-            const marker = document.createElement('span');
-            marker.className = 'marker';
-            marker.style.background = categoryMeta[cat].color;
-            markers.appendChild(marker);
-          });
-          cell.appendChild(markers);
-        }
-
-        if (original.length) {
-          cell.addEventListener('click', function() {
-            openModal(month.title, day, filtered.length ? filtered : original, !filtered.length);
-          });
-        }
-
-        calendarGrid.appendChild(cell);
-      }
-    }
-
-    function renderEvents(month) {
-      const items = month.events.filter(matchesFilters).sort(function(a, b) { return a.day - b.day; });
-      eventList.innerHTML = '';
-      eventsCount.textContent = items.length + ' حدث';
-
-      if (!items.length) {
-        eventList.innerHTML = '<div class="empty-state">لا توجد نتائج مطابقة في هذا الشهر.</div>';
-        return;
-      }
-
-      items.forEach(function(event) {
-        const meta = categoryMeta[event.category];
-        const card = document.createElement('div');
-        card.className = 'event-card';
-        card.innerHTML = '<div class="event-top"><span class="tag"><span class="dot" style="background:' + meta.color + '"></span>' + meta.label + '</span><span>' + event.day + ' ' + month.title.split(' ')[0] + '</span></div><p class="event-title">' + event.title + '</p>';
-        card.addEventListener('click', function() {
-          const sameDay = month.events.filter(function(e) { return e.day === event.day && matchesFilters(e); });
-          openModal(month.title, event.day, sameDay, false);
-        });
-        eventList.appendChild(card);
-      });
-    }
-
-    function renderSummary(month) {
-      const counts = { school:0, holiday:0, global:0, islamic:0, grades:0, review:0, exam:0 };
-      month.events.filter(matchesFilters).forEach(function(e) { counts[e.category]++; });
-      summaryGrid.innerHTML = '';
-      Object.keys(categoryMeta).forEach(function(key) {
-        const box = document.createElement('div');
-        box.className = 'summary-box';
-        box.innerHTML = '<strong>' + counts[key] + '</strong><span>' + categoryMeta[key].label + '</span>';
-        summaryGrid.appendChild(box);
-      });
-    }
-
-    function renderYear() {
-      yearView.innerHTML = '';
-      months.forEach(function(month, index) {
-        const card = document.createElement('div');
-        card.className = 'mini-month';
-        card.innerHTML = '<h3>' + month.title + '</h3>';
-        const grid = document.createElement('div');
-        grid.className = 'mini-grid';
-
-        weekDays.forEach(function(day) {
-          const head = document.createElement('div');
-          head.className = 'mini-head';
-          head.textContent = day.slice(0,2);
-          grid.appendChild(head);
-        });
-
-        for (let i = 0; i < month.startOffset; i++) {
-          const empty = document.createElement('div');
-          empty.className = 'mini-day empty';
-          grid.appendChild(empty);
-        }
-
-        for (let d = 1; d <= month.days; d++) {
-          const visible = month.events.some(function(e) { return e.day === d && matchesFilters(e); });
-          const el = document.createElement('div');
-          el.className = 'mini-day' + (visible ? ' eventful' : '');
-          el.textContent = d;
-          if (visible) {
-            el.addEventListener('click', function() {
-              state.activeMonthIndex = index;
-              state.view = 'month';
-              render();
-            });
-          }
-          grid.appendChild(el);
-        }
-
-        card.appendChild(grid);
-        yearView.appendChild(card);
-      });
-    }
-
-    function openModal(monthTitleText, day, events, filteredOut) {
-      modalTitle.textContent = day + ' ' + monthTitleText;
-      modalContent.innerHTML = '';
-      if (filteredOut) {
-        const note = document.createElement('div');
-        note.className = 'empty-state';
-        note.textContent = 'هذا اليوم فيه أحداث لكنها غير ظاهرة بسبب الفلترة الحالية.';
-        modalContent.appendChild(note);
-      }
-      events.forEach(function(event) {
-        const meta = categoryMeta[event.category];
-        const card = document.createElement('div');
-        card.className = 'event-card';
-        card.innerHTML = '<div class="event-top"><span class="tag"><span class="dot" style="background:' + meta.color + '"></span>' + meta.label + '</span><span>' + day + '</span></div><p class="event-title">' + event.title + '</p>';
-        modalContent.appendChild(card);
-      });
-      modal.classList.add('show');
-    }
-
-    function closeModal() {
-      modal.classList.remove('show');
-    }
-
-    function updateView() {
-      document.querySelectorAll('.switch-btn').forEach(function(btn) {
-        btn.classList.toggle('active', btn.dataset.view === state.view);
-      });
-      monthView.classList.toggle('active', state.view === 'month');
-      yearView.classList.toggle('active', state.view === 'year');
-    }
-
-    function render() {
-      buildMonthNav();
-      const month = months[state.activeMonthIndex];
-      renderCalendar(month);
-      renderEvents(month);
-      renderSummary(month);
-      renderYear();
-      updateView();
-    }
-
-    document.querySelectorAll('.switch-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        state.view = btn.dataset.view;
-        updateView();
-      });
-    });
-
-    document.getElementById('prevMonth').addEventListener('click', function() {
-      state.activeMonthIndex = (state.activeMonthIndex - 1 + months.length) % months.length;
-      render();
-    });
-
-    document.getElementById('nextMonth').addEventListener('click', function() {
-      state.activeMonthIndex = (state.activeMonthIndex + 1) % months.length;
-      render();
-    });
-
-    document.getElementById('printBtn').addEventListener('click', function() { window.print(); });
-    document.getElementById('resetBtn').addEventListener('click', function() {
-      state.activeMonthIndex = 0;
-      state.view = 'month';
-      render();
-    });
-
-    searchInput.addEventListener('input', render);
-    categoryFilter.addEventListener('change', render);
-
-    document.getElementById('saveNotes').addEventListener('click', function() {
-      localStorage.setItem(notesKey, notesArea.value);
-      alert('تم حفظ الملاحظات.');
-    });
-
-    document.getElementById('clearNotes').addEventListener('click', function() {
-      notesArea.value = '';
-      localStorage.removeItem(notesKey);
-    });
-
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModal();
-    });
-
-    notesArea.value = localStorage.getItem(notesKey) || '';
-    buildLegendAndFilter();
-    render();
-  </script>
 </body>
 </html>
